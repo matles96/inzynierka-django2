@@ -1,0 +1,62 @@
+{% extends "./base_reception.html" %}
+
+
+{% block content %}
+
+
+<div class="container">
+
+    <div class="card" style="width: 40rem;">
+        <div class="card-header">
+          Informacje o pacjencie
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Imię: {{ patient_info.first_name }}</li>
+          <li class="list-group-item">Nazwisko: {{ patient_info.last_name }}</li>
+          <li class="list-group-item">Pesel: {{ patient_info.pesel }}</li>
+          <li class="list-group-item">Numer telefonu: {{ patient_info.phone_number }}</li>
+          <li class="list-group-item">Płeć: {{ patient_info.sex }}</li>
+          <li class="list-group-item">Data urodzenia: {{ patient_info.birth_date }}</li>
+        </ul>
+      </div>
+    </br></br>
+
+
+    <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 100%; max-height: 350px;">
+        <div class="d-flex">
+            <ul class="list-group mx-auto justify-content-center">
+                {% for visit in visits %}
+                <li class="list-group-item mb-3" style="width: 100%;">
+                    <table class="table table-borderless">
+                        <tbody>
+                          <tr>
+                            <th style="font-weight: normal;">Imię i nazwisko: {{ visit.patient.first_name }} {{ visit.patient.last_name }}</th>
+                            <td>PESEL: {{ visit.patient.pesel }}</td>
+                            <td>Lekarz: {{ visit.doctor.first_name }} {{ visit.doctor.last_name }}</td>
+                            <td>Date i czas: {{ visit.date_time }}</td>
+                            <td><a href="{% url 'reception_visit_edit' visit.pk %}"><button type="button" class="btn btn-primary">Edytuj</button></a></td>
+                            <td>
+                                <form action="{% url 'reception_visit_delete' visit.pk %}" method="post">
+                                    {% csrf_token %}
+                                    <input type="submit" class="btn btn-danger" value="Usuń">
+                                </form>
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </li>
+                {% endfor %}
+            </ul>
+            </div>
+    </div>
+    </br>
+
+
+    <div>
+        <a href="{% url 'reception_patient_edit' patient.pk %}"><button class="btn btn-info btn-md">Edytuj dane pacenta</button></a>
+        <a href="{% url 'reception_visit_add' patient.pk %}"><button class="btn btn-info btn-md">Dodaj wizyte</button></a>
+    </div>
+
+</div>
+{% endblock %}
+

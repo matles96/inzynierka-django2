@@ -1,0 +1,67 @@
+{% extends "./doctor_base.html" %}
+
+
+{% block content %}
+
+<div class="container">
+    <div class="card" style="width: 40rem;">
+        <div class="card-header">
+          Informacje o pacjencie
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Imię: {{ patient_info.first_name }}</li>
+          <li class="list-group-item">Nazwisko: {{ patient_info.last_name }}</li>
+          <li class="list-group-item">Pesel: {{ patient_info.pesel }}</li>
+          <li class="list-group-item">Numer telefonu: {{ patient_info.phone_number }}</li>
+          <li class="list-group-item">Płeć: {{ patient_info.sex }}</li>
+          <li class="list-group-item">Data urodzenia: {{ patient_info.birth_date }}</li>
+        </ul>
+      </div>
+    </br></br>
+    <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 100%; max-height: 500px;">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Opis</th>
+                <th scope="col">Lekarstwa</th>
+                <th scope="col">Dawkowanie</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for his in history %}
+                <tr>
+                    <td style="font-weight: normal;">{{ his.entry }}</td>
+                    <td>{{ his.medicine }}</td>
+                    <td>{{ his.dose }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+    </br>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="entry">Opis</label>
+          <textarea class="form-control" id="entry" name="entry" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="medicine">Lekarstwa</label>
+          <textarea class="form-control" id="medicine" name="medicine" rows="2"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="dose">Dawkowanie</label>
+            <textarea class="form-control" id="dose" name="dose" rows="2"></textarea>
+        </div>
+        </br>
+        <div class="form-group">
+            <input type="submit" name="submit" class="btn btn-info btn-md" value="Dodaj">
+        </div>
+      </form>
+   
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "./base_reception.html" %}
+
+
+{% block content %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="form-group row">
+            <label for="first_name" class="col-sm-2 col-form-label">Imię</label>
+            <div class="col-sm-8">
+                {{ form.first_name }}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="last_name" class="col-sm-2 col-form-label">Nazwisko</label>
+            <div class="col-sm-8">
+                {{ form.last_name }}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="pesel" class="col-sm-2 col-form-label">Pesel</label>
+            <div class="col-sm-8">
+                {{ form.pesel }}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="phone_number" class="col-sm-2 col-form-label">Numer telefonu</label>
+            <div class="col-sm-8">
+                {{ form.phone_number }}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="sex" class="col-sm-2 col-form-label">Płeć</label>
+            <div class="col-sm-8">
+                {{ form.sex }}
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <label for="birth_date" class="col-sm-2 col-form-label">Data urodzenia</label>
+            <div class="col-sm-8">
+                {{ form.birth_date }}
+            </div>
+        </div>
+        <br>
+        <button type="submit", class="btn btn-primary">SUBMIT</button>
+    </form>
+</div>
+{% endblock %}
