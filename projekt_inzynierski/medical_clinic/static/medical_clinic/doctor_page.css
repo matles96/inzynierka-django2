@@ -1,0 +1,12 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #bfeef5;
+    height: 100vh;
+  }
+.navbar {
+    margin-bottom: 20px;
+  }
+header{
+    background-color: #2186a5;
+}

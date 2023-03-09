@@ -1,0 +1,57 @@
+{% extends "./base_reception.html" %}
+
+
+{% block content %}
+
+<div class="container">
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="{{ form.first_name.name }}" class="col-sm-2 col-form-label">Imię: </label>
+      <div class="col-sm-8">
+        <input type="text" class="form-control" id="formGroupExampleInput" id="{{ form.first_name.name }}" name="{{ form.first_name.name }}">
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="{{ form.last_name.name }}" class="col-sm-2 col-form-label">Nazwisko: </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="formGroupExampleInput" id="{{ form.last_name.name }}" name="{{ form.last_name.name }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="{{ form.pesel.name }}" class="col-sm-2 col-form-label">PESEL: </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="formGroupExampleInput" id="{{ form.pesel.name }}" name="{{ form.pesel.name }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="{{ form.phone_number.name }}" class="col-sm-2 col-form-label">Numer telefonu: </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="formGroupExampleInput" id="{{ form.phone_number.name }}" name="{{ form.phone_number.name }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="{{ form.sex.name }}" class="col-sm-2 col-form-label">Płeć: </label>
+        <div class="col-sm-8">
+          <input type="text" class="form-control" id="formGroupExampleInput" id="{{ form.sex.name }}" name="{{ form.sex.name }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-group row">
+        <label for="{{ form.birth_date.name }}" class="col-sm-2 col-form-label">Data urodzenia</label>
+        <div class="col-sm-8">
+          <input type="date" class="form-control" id="formGroupExampleInput" id="{{ form.birth_date.name }}" name="{{ form.birth_date.name }}">
+        </div>
+    </div>
+    <br>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Dodaj">
+    </div>
+
+</form>
+</div>
+{% endblock %}

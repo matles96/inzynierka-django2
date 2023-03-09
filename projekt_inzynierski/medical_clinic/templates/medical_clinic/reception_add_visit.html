@@ -1,0 +1,36 @@
+{% extends "./base_reception.html" %}
+
+
+{% block content %}
+
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input type="hidden" id="id_patient" name="patient" value="{{ patient.first.pk }}">
+
+        <div class="form-group row">
+            <label for="doctor" class="col-sm-2 col-form-label">Lekarz</label>
+
+            <div class="col-sm-8">
+                <select class="form-control" id="doctor" name="doctor">
+                    {% for doctor in doctors %}
+                    <option value="{{ doctor.pk }}">{{ doctor.first_name }} {{ doctor.last_name }} {{ doctor.username }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+          </div>
+        <br>
+        <div class="form-group row">
+            <label for="date_time" class="col-sm-2 col-form-label">Data i czas</label>
+            <div class="col-sm-8">
+              <input type="datetime-local" class="form-control" id="formGroupExampleInput" id="date_time" name="date_time">
+            </div>
+        </div>
+        <br>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Dodaj">
+        </div>
+    
+    </form>
+</div>
+{% endblock %}
